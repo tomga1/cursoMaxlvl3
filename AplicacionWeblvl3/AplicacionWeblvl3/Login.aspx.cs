@@ -13,5 +13,10 @@ namespace AplicacionWeblvl3
         {
 
         }
+
+        protected void btnAceptar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
