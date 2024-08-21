@@ -92,7 +92,7 @@
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="Login.aspx" />
-    <Content Include="Pagina1.aspx" />
+    <Content Include="GridArticulos.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -120,12 +120,12 @@
     <Compile Include="MiMaster.Master.designer.cs">
       <DependentUpon>MiMaster.Master</DependentUpon>
     </Compile>
-    <Compile Include="Pagina1.aspx.cs">
-      <DependentUpon>Pagina1.aspx</DependentUpon>
+    <Compile Include="GridArticulos.aspx.cs">
+      <DependentUpon>GridArticulos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pagina1.aspx.designer.cs">
-      <DependentUpon>Pagina1.aspx</DependentUpon>
+    <Compile Include="GridArticulos.aspx.designer.cs">
+      <DependentUpon>GridArticulos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -164,6 +164,16 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\source\GestionEmprendimiento\dominio\dominio.csproj">
+      <Project>{74446bd3-a4bc-4480-836b-664eb9ab3767}</Project>
+      <Name>dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\source\GestionEmprendimiento\negocio\negocio.csproj">
+      <Project>{dfc87c83-dfd3-4148-8c96-8055e51b8a91}</Project>
+      <Name>negocio</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
