@@ -43,7 +43,7 @@
 
             <div class="mb-3">
                 <asp:Button Text="Aceptar" ID="btnAceptar" CssClass="btn btn-success" OnClick="btnAceptar_Click" runat="server" />
-                <a href="Default.aspx">Cancelar</a>
+                <a href="GridArticulos.aspx">Cancelar</a>
 
 
 
