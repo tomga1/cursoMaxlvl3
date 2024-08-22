@@ -4,8 +4,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-  
-    <br />  
+
+    <br />
 
     <div class="container">
         <div class="row">
@@ -18,13 +18,13 @@
                             <p class="card-text"><%# Eval("descripcion")%></p>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">$<%# Eval("precio_compra")%></li>
+                            <li class="list-group-item">$<%# Convert.ToDecimal(Eval("precio_compra")).ToString("N2", System.Globalization.CultureInfo.CreateSpecificCulture("es-AR")) %> </li>           
                             <li class="list-group-item"><%# ((dominio.Dom_Marca)Eval("marca")).descripcion%></li>
                             <li class="list-group-item"><%# ((dominio.Dom_Categoria)Eval("categoria")).descripcion%></li>
                         </ul>
                         <div class="card-body">
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
+                            <a href="#" class="card-link">Agregar</a>
+                            <a href="#" class="card-link">Más detalles</a>
                         </div>
                     </div>
 
