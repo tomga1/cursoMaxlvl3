@@ -12,15 +12,17 @@ namespace AplicacionWeblvl3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["listaArticulos"] == null)
             {
                 ArticulosNegocio negocio = new ArticulosNegocio();
-                var listaArticulos = negocio.listar();
-                Session.Add("listaArticulos", listaArticulos);
-                dgvArticulos.DataSource = listaArticulos;
-                dgvArticulos.DataBind();
-
+                Session.Add("listaArticulos", negocio.listar());
             }
+
+            dgvArticulos.DataSource = Session["listaArticulos"];
+            dgvArticulos.DataBind();
+
+
+           
 
         }
     }

@@ -5,23 +5,23 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h2>Listado de Articulos</h2>
 
-    <div>
+    <div class="row">
+        <div class="col">
+            <asp:GridView runat="server" ID="dgvArticulos" DataKeyNames="idProducto" CssClass="table" AutoGenerateColumns="false">
+                <Columns>
+                    <asp:BoundField HeaderText="Codigo" DataField="codigo" />
+                    <asp:BoundField HeaderText="Nombre" DataField="nombre" />
+                    <asp:BoundField HeaderText="Descripcion" DataField="descripcion" />
+                    <asp:BoundField HeaderText="Marca" DataField="marca" />
+                    <asp:BoundField HeaderText="Categoria" DataField="categoria" />
+                    <asp:BoundField HeaderText="Precio" DataField="precio_compra" />
+                </Columns>
 
-        <asp:GridView runat="server" ID="dgvArticulos" DataKeyNames="idProducto" CssClass="table" AutoGenerateColumns="false">
-            <Columns>
-                <asp:BoundField HeaderText="Codigo" DataField="codigo" />
-                <asp:BoundField HeaderText="Nombre" DataField="nombre" />
-                <asp:BoundField HeaderText="Descripcion" DataField="descripcion" />
-                <asp:BoundField HeaderText="Marca" DataField="marca" />
-                <asp:BoundField HeaderText="Categoria" DataField="categoria" />
-                <asp:BoundField HeaderText="Precio" DataField="precio_compra" />
-            </Columns>
-
-
-
-
-        </asp:GridView>
-
+            </asp:GridView>
+                <div>
+                    <a href="FormularioArticulos.aspx">Agregar</a>
+                </div>
+        </div>
     </div>
 
 </asp:Content>
