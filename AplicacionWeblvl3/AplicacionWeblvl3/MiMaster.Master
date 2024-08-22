@@ -56,7 +56,20 @@
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
-            <footer>Footer</footer>
+            <footer style="background-color: #f8f9fa; padding: 20px; text-align: center; font-size: 14px; color: #6c757d;">
+    <div>
+        <p>&copy; 2024 TuEcommerce. Todos los derechos reservados.</p>
+        <p><a href="/about-us" style="color: #007bff; text-decoration: none;">Sobre Nosotros</a> | 
+           <a href="/contact" style="color: #007bff; text-decoration: none;">Contacto</a> | 
+           <a href="/privacy-policy" style="color: #007bff; text-decoration: none;">Política de Privacidad</a></p>
+        <p>Síguenos en 
+            <a href="https://facebook.com/tu-ecommerce" style="color: #007bff; text-decoration: none;">Facebook</a>, 
+            <a href="https://twitter.com/tu-ecommerce" style="color: #007bff; text-decoration: none;">Twitter</a>, 
+            <a href="https://instagram.com/tu-ecommerce" style="color: #007bff; text-decoration: none;">Instagram</a>
+        </p>
+    </div>
+</footer>
+
         </div>
     </form>
 </body>
