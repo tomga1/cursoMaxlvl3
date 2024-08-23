@@ -1,4 +1,5 @@
 ﻿using dominio;
+using negocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,23 +11,26 @@ namespace AplicacionWeblvl3
 {
     public partial class FormularioArticulos : System.Web.UI.Page
     {
+        ArticulosNegocio negocio = new ArticulosNegocio();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                ddlMarcas.Items.Add("Samsung");
-                ddlMarcas.Items.Add("Apple");
-                ddlMarcas.Items.Add("Sony");
-                ddlMarcas.Items.Add("Huawei");
-                ddlMarcas.Items.Add("Motorola");
+                if (!IsPostBack)
+                {
+                    ddlMarcas.DataSource = negocio.listarMarcas();
+                    ddlMarcas.DataBind();
 
-
-                ddlCategorias.Items.Add("Celulares");
-                ddlCategorias.Items.Add("Televisores");
-                ddlCategorias.Items.Add("Media");
-                ddlCategorias.Items.Add("Audio");
-
+                    ddlCategorias.DataSource = negocio.listarCategorias();
+                    ddlCategorias.DataBind();
+                }
             }
+            catch (Exception ex)
+            {
+
+                Session.Add("error", ex);
+            }
+            
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
