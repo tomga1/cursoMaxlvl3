@@ -19,9 +19,13 @@ namespace AplicacionWeblvl3
                 if (!IsPostBack)
                 {
                     ddlMarcas.DataSource = negocio.listarMarcas();
+                    ddlMarcas.DataValueField = "Id";
+                    ddlMarcas.DataTextField = "Descripcion";
                     ddlMarcas.DataBind();
 
                     ddlCategorias.DataSource = negocio.listarCategorias();
+                    ddlCategorias.DataValueField = "Id";
+                    ddlCategorias.DataTextField = "Descripcion";
                     ddlCategorias.DataBind();
                 }
             }
@@ -42,14 +46,22 @@ namespace AplicacionWeblvl3
             articulo.precio_compra = decimal.Parse(txtPrecio.Text);
             articulo.UrlImagen = txtImg.Text;
             articulo.marca = new Dom_Marca();
+            articulo.marca.idMarca = int.Parse(ddlMarcas.SelectedValue);
             articulo.categoria = new Dom_Categoria();
-            articulo.marca.descripcion = ddlMarcas.SelectedValue;
-            articulo.categoria.descripcion = ddlCategorias.SelectedValue;
+            articulo.categoria.idCategoria = int.Parse(ddlCategorias.SelectedValue);
 
+
+            negocio.agregar(articulo);
+            Response.Redirect("GridArticulos.aspx");
 
             ((List<Dom_Articulos>)Session["listaArticulos"]).Add(articulo);
 
             Response.Redirect("GridArticulos.aspx");
+        }
+
+        protected void txtImg_TextChanged(object sender, EventArgs e)
+        {
+            imgArticulo.ImageUrl = txtImg.Text; 
         }
     }
 }
