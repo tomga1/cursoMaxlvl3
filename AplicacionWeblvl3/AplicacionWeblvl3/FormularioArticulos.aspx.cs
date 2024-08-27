@@ -28,6 +28,13 @@ namespace AplicacionWeblvl3
                     ddlCategorias.DataTextField = "descripcion";
                     ddlCategorias.DataBind();
                 }
+
+                if (Request.QueryString["id"] != null)
+                {
+
+                }
+
+
             }
             catch (Exception ex)
             {
