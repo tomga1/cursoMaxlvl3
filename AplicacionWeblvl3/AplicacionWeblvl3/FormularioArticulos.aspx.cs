@@ -32,7 +32,7 @@ namespace AplicacionWeblvl3
 
                 string id = Request.QueryString["Id"] != null ? Request.QueryString["Id"].ToString() : "";
 
-                if (id != "")
+                if (id != "" && !IsPostBack)
                 {
                     //ArticulosNegocio negocio = new ArticulosNegocio();
                     Dom_Articulos seleccionado = (negocio.listarConId(id))[0];
@@ -78,9 +78,14 @@ namespace AplicacionWeblvl3
 
             if (Request.QueryString["Id"] != null)
             {
+                articulo.idProducto = int.Parse(Request.QueryString["Id"]); 
                 negocio.modificar(articulo);
             }
-            negocio.agregar(articulo);
+            else
+            {
+
+                negocio.agregar(articulo);
+            }
 
 
             //((List<Dom_Articulos>)Session["listaArticulos"]).Add(articulo);

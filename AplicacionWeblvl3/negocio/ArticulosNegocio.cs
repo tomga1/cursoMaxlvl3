@@ -218,19 +218,17 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("update productos set codigo = @codigo, codigo_barra = @codigo_barra, nombre = @nombre, id_rubro = @idRubro, descripcion = @descripcion, precio_venta = @precio_venta, id_unidad_medida = @id_unidad_de_medida, fecha_vencimiento = @fecha_vencimiento, estado = @estado, id_proveedor = @idProveedor, id_marca = @id_marca where id_producto = @idProducto");
-                datos.setearParametro("@codigo", producto.codigo.ToUpper());
-                datos.setearParametro("@codigo_barra", producto.codigo_de_barra);
-                datos.setearParametro("@nombre", producto.nombre.ToUpper());
-                datos.setearParametro("@idRubro", producto.Rubro.idRubro);
-                datos.setearParametro("@descripcion", producto.descripcion.ToUpper());
-                datos.setearParametro("@precio_venta", producto.precio_venta);
-                datos.setearParametro("@id_unidad_de_medida", producto.UnidadMedida.id_unidad_de_medida);
-                datos.setearParametro("@fecha_vencimiento", producto.fecha_vencimiento);
-                datos.setearParametro("@estado", producto.estado);
-                datos.setearParametro("@idProveedor", producto.Proveedor.idProveedor);
-                datos.setearParametro("@idProducto", producto.idProducto);
-                datos.setearParametro("@id_marca", producto.Marca.idMarca);
+                datos.setearConsulta("update articulos set Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, IdMarca = @idMarca, IdCategoria = @idCategoria, ImagenUrl = @UrlImagen, Precio = @precio_compra where Id = @idProducto");
+
+                datos.setearParametro("@idProducto", articulo.idProducto);
+                datos.setearParametro("@codigo", articulo.codigo.ToUpper());
+                datos.setearParametro("@nombre", articulo.nombre.ToUpper());
+                datos.setearParametro("@descripcion", articulo.descripcion.ToUpper());
+                datos.setearParametro("@idMarca", articulo.marca.idMarca);
+                datos.setearParametro("@idCategoria", articulo.categoria.idCategoria);
+                datos.setearParametro("@UrlImagen", articulo.UrlImagen);
+                datos.setearParametro("@precio_compra", articulo.precio_compra);
+                
 
 
 
