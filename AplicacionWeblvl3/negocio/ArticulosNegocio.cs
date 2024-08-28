@@ -310,20 +310,20 @@ namespace negocio
         //            }
         //        }
 
-        //        public void eliminar(int id)
-        //        {
-        //            try
-        //            {
-        //                AccesoDatos datos = new AccesoDatos();
-        //                datos.setearConsulta("DELETE productos where id_producto = @id_producto");
-        //                datos.setearParametro("@id_producto", id);
-        //                datos.ejecutarAccion();
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                throw ex;
-        //            }
-        //        }
+        public void eliminar(int id)
+        {
+            try
+            {
+                AccesoDatos datos = new AccesoDatos();
+                datos.setearConsulta("DELETE articulos where Id = @idProducto");
+                datos.setearParametro("@idProducto", id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         //        public List<Dom_Articulos> filtrar(string campo, string criterio, string filtro)
         //        {

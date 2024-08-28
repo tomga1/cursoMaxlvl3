@@ -69,6 +69,15 @@ namespace AplicacionWeblvl3
         protected global::System.Web.UI.WebControls.DropDownList ddlCategorias;
 
         /// <summary>
+        /// Control UpdatePanel2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
+
+        /// <summary>
         /// Control btnAceptar.
         /// </summary>
         /// <remarks>
@@ -76,6 +85,33 @@ namespace AplicacionWeblvl3
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAceptar;
+
+        /// <summary>
+        /// Control btnEliminar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEliminar;
+
+        /// <summary>
+        /// Control chkConfirmaEliminacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkConfirmaEliminacion;
+
+        /// <summary>
+        /// Control ConfirmaEliminar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ConfirmaEliminar;
 
         /// <summary>
         /// Control txtDescripcion.

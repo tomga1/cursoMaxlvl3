@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -12,9 +13,12 @@ namespace AplicacionWeblvl3
     public partial class FormularioArticulos : System.Web.UI.Page
     {
 
+        public bool ConfirmaEliminacion { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             ArticulosNegocio negocio = new ArticulosNegocio();
+            ConfirmaEliminacion = false;
+
             try
             {
                 if (!IsPostBack)
@@ -56,7 +60,7 @@ namespace AplicacionWeblvl3
 
                 Session.Add("error", ex);
             }
-            
+
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
@@ -78,7 +82,7 @@ namespace AplicacionWeblvl3
 
             if (Request.QueryString["Id"] != null)
             {
-                articulo.idProducto = int.Parse(Request.QueryString["Id"]); 
+                articulo.idProducto = int.Parse(Request.QueryString["Id"]);
                 negocio.modificar(articulo);
             }
             else
@@ -97,7 +101,45 @@ namespace AplicacionWeblvl3
 
         protected void txtImg_TextChanged(object sender, EventArgs e)
         {
-            imgArticulo.ImageUrl = txtImg.Text; 
+            imgArticulo.ImageUrl = txtImg.Text;
+        }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            ConfirmaEliminacion = true; 
+
+        }
+
+
+
+        protected void ConfirmaEliminar_Click(object sender, EventArgs e)
+        {
+
+            ArticulosNegocio negocio = new ArticulosNegocio();  
+            string id = Request.QueryString["Id"] ?? string.Empty;
+
+            try
+            {
+
+                if (!string.IsNullOrEmpty(id) && int.TryParse(id, out  int idProducto))
+                {
+                    negocio.eliminar(idProducto);
+
+                    List<Dom_Articulos> listaArticulosActualizada = negocio.listar();
+                    Session["listaArticulos"] = listaArticulosActualizada;
+
+                    Response.Redirect("GridArticulos.aspx?mensaje=Eliminado con éxito!");
+
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("error", ex); 
+            }
         }
     }
 }

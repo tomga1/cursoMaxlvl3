@@ -12,17 +12,26 @@ namespace AplicacionWeblvl3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["listaArticulos"] == null)
+            if (!IsPostBack)
             {
-                ArticulosNegocio negocio = new ArticulosNegocio();
-                Session.Add("listaArticulos", negocio.listar());
+                if (Session["listaArticulos"] == null)
+                {
+                    ArticulosNegocio negocio = new ArticulosNegocio();
+                    Session.Add("listaArticulos", negocio.listar());
+                }
+
+                
+
             }
+                dgvArticulos.DataSource = Session["listaArticulos"];
+                dgvArticulos.DataBind();
 
-            dgvArticulos.DataSource = Session["listaArticulos"];
-            dgvArticulos.DataBind();
 
-
-           
+            string mensaje = Request.QueryString["mensaje"];
+            if (!string.IsNullOrEmpty(mensaje))
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "alert", $"alert('{mensaje}');", true);
+            }
 
         }
 

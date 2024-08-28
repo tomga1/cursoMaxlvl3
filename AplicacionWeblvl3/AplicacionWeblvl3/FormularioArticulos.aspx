@@ -33,11 +33,29 @@
                 <label for="ddlCategorias" class="form-label">Categoria</label>
                 <asp:DropDownList ID="ddlCategorias" CssClass="form-select" runat="server"></asp:DropDownList>
             </div>
+            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
 
-            <div class="mb-3">
-                <asp:Button Text="Aceptar" ID="btnAceptar" CssClass="btn btn-success" OnClick="btnAceptar_Click" runat="server" />
-                <a href="GridArticulos.aspx">Cancelar</a>
-            </div>
+                <ContentTemplate>
+
+                    <div class="mb-3">
+
+                        <asp:Button Text="Aceptar" ID="btnAceptar" CssClass="btn btn-success" OnClick="btnAceptar_Click" runat="server" />
+
+
+                        <asp:Button Text="Eliminar" ID="btnEliminar" CssClass="btn btn-danger" OnClick="btnEliminar_Click" runat="server" />
+                    </div>
+
+                    <%if (ConfirmaEliminacion)
+
+                        { %>
+                    <div class="mb-3">
+                        <asp:CheckBox Text="Confirmar Eliminación" ID="chkConfirmaEliminacion" runat="server" />
+                        <asp:Button Text="Eliminar" ID="ConfirmaEliminar" OnClick="ConfirmaEliminar_Click" CssClass="btn btn-outline-danger" runat="server" />
+                    </div>
+
+                    <% } %>
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
 
 
@@ -60,6 +78,13 @@
 
                 </ContentTemplate>
             </asp:UpdatePanel>
+
+
+
+
+
+
+
 
 
 
