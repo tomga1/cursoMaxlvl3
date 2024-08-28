@@ -42,20 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccesoDatos.cs" />
-    <Compile Include="BajaStockNegocio.cs" />
-    <Compile Include="IngresosNegocio.cs" />
+    <Compile Include="CategoriasNegocio.cs" />
     <Compile Include="MarcasNegocio.cs" />
-    <Compile Include="MotivosBajaNegocio.cs" />
-    <Compile Include="ProductoNegocio.cs" />
-    <Compile Include="ProveedoresNegocio.cs" />
-    <Compile Include="RubroNegocio.cs" />
-    <Compile Include="ClientesNegocio.cs" />
-    <Compile Include="BotonesPermisoNegocio.cs" />
+    <Compile Include="ArticulosNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RolNegocio.cs" />
-    <Compile Include="UbicacionesNegocio.cs" />
-    <Compile Include="UnidadMedidaNegocio.cs" />
-    <Compile Include="UsuarioNegocio.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\dominio\dominio.csproj">

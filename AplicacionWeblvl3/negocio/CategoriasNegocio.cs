@@ -7,11 +7,11 @@
 
 //namespace negocio
 //{
-//    public class MarcasNegocio
+//    public class CategoriasNegocio
 //    {
-//        public List<Dom_Marca> listar()
+//        public List<Dom_Categoria> listar()
 //        {
-//            List<Dom_Marca> lista = new List<Dom_Marca>();
+//            List<Dom_Categoria> lista = new List<Dom_Categoria>();
 //            AccesoDatos datos = new AccesoDatos();
 
 //            try
@@ -21,7 +21,7 @@
 
 //                while (datos.Lector.Read())
 //                {
-//                    Dom_Marca aux = new Dom_Marca();
+//                    Dom_Categoria aux = new Dom_Categoria();
 
 //                    aux.idMarca = (int)datos.Lector["id_marca"];
 //                    aux.descripcion = (string)datos.Lector["descripcion_marca"];
@@ -35,7 +35,7 @@
 //            catch (Exception ex)
 //            {
 
-//                lista = new List<Dom_Marca>();
+//                lista = new List<Dom_Categoria>();
 //            }
 //            finally
 //            {
@@ -46,7 +46,7 @@
 
 //        }
 
-//        public void agregar(Dom_Marca nuevo)
+//        public void agregar(Dom_Categoria nuevo)
 //        {
 //            AccesoDatos datos = new AccesoDatos();
 
@@ -66,7 +66,7 @@
 //        }
 
 
-//        public void modificar(Dom_Marca marca)
+//        public void modificar(Dom_Categoria marca)
 //        {
 //            AccesoDatos datos = new AccesoDatos();
 
@@ -103,9 +103,9 @@
 //            }
 //        }
 
-//        //public List<Dom_Marca> filtrar(string campo, string criterio, string filtro)
+//        //public List<Dom_Categoria> filtrar(string campo, string criterio, string filtro)
 //        //{
-//        //    List<Dom_Marca> lista = new List<Dom_Marca>();
+//        //    List<Dom_Categoria> lista = new List<Dom_Categoria>();
 //        //    AccesoDatos datos = new AccesoDatos();
 //        //    try
 //        //    {
@@ -135,7 +135,7 @@
 
 //        //        while (datos.Lector.Read())
 //        //        {
-//        //            Dom_Marca aux = new Dom_Marca();
+//        //            Dom_Categoria aux = new Dom_Categoria();
 //        //            aux.descripcion = (string)datos.Lector["descripcion"];
 
 
@@ -153,5 +153,6 @@
 
 //        //    throw new NotImplementedException();
 //        //}
+
 //    }
 //}

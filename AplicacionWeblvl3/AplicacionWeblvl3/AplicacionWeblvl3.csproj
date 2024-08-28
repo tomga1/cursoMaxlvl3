@@ -172,13 +172,14 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\source\GestionEmprendimiento\dominio\dominio.csproj">
+    <ProjectReference Include="..\dominio\dominio.csproj">
       <Project>{74446bd3-a4bc-4480-836b-664eb9ab3767}</Project>
       <Name>dominio</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\source\GestionEmprendimiento\negocio\negocio.csproj">
+    <ProjectReference Include="..\negocio\negocio.csproj">
       <Project>{dfc87c83-dfd3-4148-8c96-8055e51b8a91}</Project>
       <Name>negocio</Name>
     </ProjectReference>

@@ -43,28 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ajuste_stock.cs" />
-    <Compile Include="Dom_EstadosVenta.cs" />
+    <Compile Include="Dom_Categoria.cs" />
     <Compile Include="Dom_Marca.cs" />
-    <Compile Include="Dom_MediosDePago.cs" />
-    <Compile Include="Dom_MotivoBajaStock.cs" />
-    <Compile Include="Dom_Rubro.cs" />
-    <Compile Include="Clientes.cs" />
-    <Compile Include="Dom_Ubicaciones.cs" />
-    <Compile Include="IngresoCab.cs" />
-    <Compile Include="Contacto.cs" />
-    <Compile Include="IngresoDet.cs" />
-    <Compile Include="Ventas_det.cs" />
-    <Compile Include="BotonesPermiso.cs" />
-    <Compile Include="Dom_UnidadDeMedida.cs" />
-    <Compile Include="OpcionCombo.cs" />
-    <Compile Include="Dom_Producto.cs" />
+    <Compile Include="Dom_Articulos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Dom_Proveedor.cs" />
-    <Compile Include="Rol.cs" />
-    <Compile Include="Tipo_Documento.cs" />
-    <Compile Include="Usuario.cs" />
-    <Compile Include="Ventas_cab.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
