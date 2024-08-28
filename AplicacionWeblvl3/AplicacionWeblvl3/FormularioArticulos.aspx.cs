@@ -11,9 +11,10 @@ namespace AplicacionWeblvl3
 {
     public partial class FormularioArticulos : System.Web.UI.Page
     {
-        ArticulosNegocio negocio = new ArticulosNegocio();
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            ArticulosNegocio negocio = new ArticulosNegocio();
             try
             {
                 if (!IsPostBack)
@@ -29,8 +30,22 @@ namespace AplicacionWeblvl3
                     ddlCategorias.DataBind();
                 }
 
-                if (Request.QueryString["id"] != null)
+                string id = Request.QueryString["Id"] != null ? Request.QueryString["Id"].ToString() : "";
+
+                if (id != "")
                 {
+                    //ArticulosNegocio negocio = new ArticulosNegocio();
+                    Dom_Articulos seleccionado = (negocio.listarConId(id))[0];
+
+                    txtCodigo.Text = seleccionado.codigo.ToString();
+                    txtNombre.Text = seleccionado.nombre.ToString();
+                    txtPrecio.Text = seleccionado.precio_compra.ToString();
+                    ddlMarcas.SelectedValue = seleccionado.marca.idMarca.ToString();
+                    ddlCategorias.SelectedValue = seleccionado.categoria.idCategoria.ToString();
+                    txtDescripcion.Text = seleccionado.descripcion.ToString();
+                    txtImg.Text = seleccionado.UrlImagen.ToString();
+
+                    txtImg_TextChanged(sender, e);
 
                 }
 
@@ -47,6 +62,9 @@ namespace AplicacionWeblvl3
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             Dom_Articulos articulo = new Dom_Articulos();
+            ArticulosNegocio negocio = new ArticulosNegocio();
+
+
             articulo.codigo = txtCodigo.Text;
             articulo.nombre = txtNombre.Text;
             articulo.descripcion = txtDescripcion.Text;
@@ -58,6 +76,10 @@ namespace AplicacionWeblvl3
             articulo.categoria.idCategoria = int.Parse(ddlCategorias.SelectedValue);
 
 
+            if (Request.QueryString["Id"] != null)
+            {
+                negocio.modificar(articulo);
+            }
             negocio.agregar(articulo);
 
 

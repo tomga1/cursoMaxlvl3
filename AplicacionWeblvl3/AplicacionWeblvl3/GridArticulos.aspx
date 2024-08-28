@@ -22,7 +22,7 @@
 
             </asp:GridView>
                 <div>
-                    <a href="FormularioArticulos.aspx">Agregar</a>
+                    <asp:Button ID="btnAgregar" Text="Agregar" runat="server" class="btn btn-primary" OnClick="btnAgregar_Click" />
                 </div>
         </div>
     </div>

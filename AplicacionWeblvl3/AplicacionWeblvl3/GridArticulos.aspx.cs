@@ -37,5 +37,10 @@ namespace AplicacionWeblvl3
             dgvArticulos.PageIndex = e.NewPageIndex;
             dgvArticulos.DataBind();
         }
+
+        protected void btnAgregar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("FormularioArticulos.aspx");
+        }
     }
 }
