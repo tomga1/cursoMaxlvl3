@@ -189,9 +189,9 @@ namespace negocio
             {
                 datos.setearConsulta("insert into articulos (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, ImagenUrl, Precio) values (@codigo, @nombre, @descripcion, @idMarca, @idCategoria, @ImagenUrl, @Precio)");
 
-                datos.setearParametro("@Codigo", nuevo.codigo.ToUpper());
-                datos.setearParametro("@Nombre", nuevo.nombre.ToUpper());
-                datos.setearParametro("@Descripcion", nuevo.descripcion.ToUpper());
+                datos.setearParametro("@Codigo", nuevo.codigo);
+                datos.setearParametro("@Nombre", nuevo.nombre);
+                datos.setearParametro("@Descripcion", nuevo.descripcion);
                 datos.setearParametro("@IdMarca", nuevo.marca.idMarca);
                 datos.setearParametro("@IdCategoria", nuevo.categoria.idCategoria);
                 datos.setearParametro("@ImagenUrl", nuevo.UrlImagen);

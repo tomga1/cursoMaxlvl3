@@ -10,6 +10,22 @@
     </asp:ContentPlaceHolder>
     <link href="content/bootstrap.min.css" rel="stylesheet" />
     <script src="js/bootstrap.min.js"></script>
+
+    <style>
+        .whatsapp-logo {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+            .whatsapp-logo img {
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+            }
+    </style>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -56,6 +72,13 @@
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
+
+            <div class="whatsapp-logo">
+                <a href="https://wa.me/+541150254381?text=Hola%20Tomas,%20me%20contacto%20a%20trav%C3%A9s%20de%20tu%20portfolio." target="_blank">
+                    <img src="https://static-00.iconduck.com/assets.00/whatsapp-icon-2048x2048-64wjztht.png" alt="WhatsApp">
+                </a>
+            </div>
+
             <footer style="background-color: #f8f9fa; padding: 20px; text-align: center; font-size: 14px; color: #6c757d;">
                 <div>
                     <p>&copy; 2024 TuEcommerce. Todos los derechos reservados.</p>
