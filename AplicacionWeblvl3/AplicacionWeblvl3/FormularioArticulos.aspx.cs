@@ -141,5 +141,30 @@ namespace AplicacionWeblvl3
                 Session.Add("error", ex); 
             }
         }
+
+        protected void btnInactivar_Click(object sender, EventArgs e)
+        {
+                ArticulosNegocio negocio = new ArticulosNegocio();
+                string id = Request.QueryString["Id"] ?? string.Empty;
+            try
+            {
+
+                if (!string.IsNullOrEmpty(id) && int.TryParse(id, out int idProducto))
+                {
+                    negocio.eliminarLogico(idProducto);
+
+                    List<Dom_Articulos> listaArticulosActualizada = negocio.listar();
+                    Session["listaArticulos"] = listaArticulosActualizada;
+
+                    Response.Redirect("GridArticulos.aspx?mensaje=Eliminado con éxito!");
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("error", ex); 
+            }
+        }
     }
 }

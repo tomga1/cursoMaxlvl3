@@ -17,6 +17,7 @@ namespace dominio
         public Dom_Categoria categoria { get; set; }
         public string UrlImagen{ get; set; }
         public decimal precio_compra { get; set; }
+        public bool Activo { get; set; }
 
     }
 }

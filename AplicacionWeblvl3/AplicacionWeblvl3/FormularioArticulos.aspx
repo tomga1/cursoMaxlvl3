@@ -43,6 +43,8 @@
 
 
                         <asp:Button Text="Eliminar" ID="btnEliminar" CssClass="btn btn-danger" OnClick="btnEliminar_Click" runat="server" />
+
+                        <asp:Button Text="Inactivar" ID="btnInactivar"  OnClick="btnInactivar_Click" CssClass="btn btn-secondary" runat="server" />
                     </div>
 
                     <%if (ConfirmaEliminacion)
