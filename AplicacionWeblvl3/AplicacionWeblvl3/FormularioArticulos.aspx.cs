@@ -41,6 +41,9 @@ namespace AplicacionWeblvl3
                     //ArticulosNegocio negocio = new ArticulosNegocio();
                     Dom_Articulos seleccionado = (negocio.listarConId(id))[0];
 
+                    Session.Add("ArticuloSeleccionado", seleccionado);
+
+
                     txtCodigo.Text = seleccionado.codigo.ToString();
                     txtNombre.Text = seleccionado.nombre.ToString();
                     txtPrecio.Text = seleccionado.precio_compra.ToString();
@@ -50,6 +53,11 @@ namespace AplicacionWeblvl3
                     txtImg.Text = seleccionado.UrlImagen.ToString();
 
                     txtImg_TextChanged(sender, e);
+
+                    if (!seleccionado.Activo)
+                    {
+                        btnInactivar.Text = "Reactivar"; 
+                    }
 
                 }
 
@@ -106,7 +114,7 @@ namespace AplicacionWeblvl3
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            ConfirmaEliminacion = true; 
+            ConfirmaEliminacion = true;
 
         }
 
@@ -115,13 +123,13 @@ namespace AplicacionWeblvl3
         protected void ConfirmaEliminar_Click(object sender, EventArgs e)
         {
 
-            ArticulosNegocio negocio = new ArticulosNegocio();  
+            ArticulosNegocio negocio = new ArticulosNegocio();
             string id = Request.QueryString["Id"] ?? string.Empty;
 
             try
             {
 
-                if (!string.IsNullOrEmpty(id) && int.TryParse(id, out  int idProducto))
+                if (!string.IsNullOrEmpty(id) && int.TryParse(id, out int idProducto))
                 {
                     negocio.eliminar(idProducto);
 
@@ -138,32 +146,33 @@ namespace AplicacionWeblvl3
             catch (Exception ex)
             {
 
-                Session.Add("error", ex); 
+                Session.Add("error", ex);
             }
         }
 
         protected void btnInactivar_Click(object sender, EventArgs e)
         {
-                ArticulosNegocio negocio = new ArticulosNegocio();
-                string id = Request.QueryString["Id"] ?? string.Empty;
+            ArticulosNegocio negocio = new ArticulosNegocio();
+            Dom_Articulos seleccionado = (Dom_Articulos)Session["ArticuloSeleccionado"];
+            string id = Request.QueryString["Id"] ?? string.Empty;
             try
             {
 
                 if (!string.IsNullOrEmpty(id) && int.TryParse(id, out int idProducto))
                 {
-                    negocio.eliminarLogico(idProducto);
+                    negocio.eliminarLogico(seleccionado.idProducto, !seleccionado.Activo);
 
                     List<Dom_Articulos> listaArticulosActualizada = negocio.listar();
                     Session["listaArticulos"] = listaArticulosActualizada;
 
-                    Response.Redirect("GridArticulos.aspx?mensaje=Eliminado con éxito!");
+                    Response.Redirect("GridArticulos.aspx?mensaje=¡El artículo ha sido inactivado!");
                 }
 
             }
             catch (Exception ex)
             {
 
-                Session.Add("error", ex); 
+                Session.Add("error", ex);
             }
         }
     }

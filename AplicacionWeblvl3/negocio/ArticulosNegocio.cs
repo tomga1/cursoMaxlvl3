@@ -20,7 +20,7 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("select a.Id, Codigo, Nombre, a.Descripcion, m.Id as MarcaId, m.descripcion as Marca, c.Id as CategoriaId, c.descripcion as Categoria, ImagenUrl, Precio FROM dbo.ARTICULOS a JOIN marcas m ON m.Id = a.IdMarca JOIN categorias c ON c.Id = a.IdCategoria");
+                datos.setearConsulta("select a.Id, Codigo, Nombre, a.Descripcion, m.Id as MarcaId, m.descripcion as Marca, c.Id as CategoriaId, c.descripcion as Categoria, ImagenUrl, Precio, a.Activo FROM dbo.ARTICULOS a JOIN marcas m ON m.Id = a.IdMarca JOIN categorias c ON c.Id = a.IdCategoria");
                 
                 datos.ejecutarLectura();
 
@@ -42,6 +42,7 @@ namespace negocio
 
                     aux.UrlImagen = datos.Lector["ImagenUrl"] == DBNull.Value ? null : (string)datos.Lector["ImagenUrl"];
                     aux.precio_compra = (decimal)datos.Lector["Precio"];
+                    aux.Activo = bool.Parse(datos.Lector["Activo"].ToString());
 
 
                     lista.Add(aux);
@@ -69,7 +70,7 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("select a.Id, Codigo, Nombre, a.Descripcion, m.Id as MarcaId, m.descripcion as Marca, c.Id as CategoriaId, c.descripcion as Categoria, ImagenUrl, Precio FROM dbo.ARTICULOS a JOIN marcas m ON m.Id = a.IdMarca JOIN categorias c ON c.Id = a.IdCategoria WHERE a.Id = @id");
+                datos.setearConsulta("select a.Id, Codigo, Nombre, a.Descripcion, m.Id as MarcaId, m.descripcion as Marca, c.Id as CategoriaId, c.descripcion as Categoria, ImagenUrl, Precio, a.Activo FROM dbo.ARTICULOS a JOIN marcas m ON m.Id = a.IdMarca JOIN categorias c ON c.Id = a.IdCategoria WHERE a.Id = @id");
                 datos.setearParametro("@Id", id);
                 datos.ejecutarLectura();
 
@@ -259,13 +260,14 @@ namespace negocio
             }
         }
 
-        public void eliminarLogico(int id)
+        public void eliminarLogico(int id, bool activo = false)
         {
             try
             {
                 AccesoDatos datos = new AccesoDatos();
                 datos.setearConsulta("update articulos set Activo = 0 where Id = @idProducto");
                 datos.setearParametro("@idProducto", id);
+                datos.setearParametro("@Activo", activo);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

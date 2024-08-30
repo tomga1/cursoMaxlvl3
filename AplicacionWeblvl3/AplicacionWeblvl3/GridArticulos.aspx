@@ -17,7 +17,9 @@
                     <asp:BoundField HeaderText="Marca" DataField="marca" />
                     <asp:BoundField HeaderText="Categoria" DataField="categoria" />
                     <asp:BoundField HeaderText="Precio" DataField="precio_compra" />
+                    <asp:CheckBoxField HeaderText="Activo" DataField="Activo" />  
                     <asp:CommandField HeaderText="Acción" ShowSelectButton="true" SelectText="✍"  />
+
                 </Columns>
 
             </asp:GridView>
