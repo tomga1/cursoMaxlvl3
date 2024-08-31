@@ -70,7 +70,7 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("select a.Id, Codigo, Nombre, a.Descripcion, m.Id as MarcaId, m.descripcion as Marca, c.Id as CategoriaId, c.descripcion as Categoria, ImagenUrl, Precio, a.Activo FROM dbo.ARTICULOS a JOIN marcas m ON m.Id = a.IdMarca JOIN categorias c ON c.Id = a.IdCategoria WHERE a.Id = @id");
+                datos.setearConsulta("select a.Id, Codigo, Nombre, a.Descripcion, m.Id as MarcaId, m.descripcion as Marca, c.Id as CategoriaId, c.descripcion as Categoria, ImagenUrl, Precio, a.Activo FROM dbo.ARTICULOS a JOIN marcas m ON m.Id = a.IdMarca JOIN categorias c ON c.Id = a.IdCategoria WHERE a.Id = @Id");
                 datos.setearParametro("@Id", id);
                 datos.ejecutarLectura();
 
@@ -91,6 +91,8 @@ namespace negocio
                     aux.categoria.descripcion = (string)datos.Lector["Categoria"];
                     aux.UrlImagen = datos.Lector["ImagenUrl"] == DBNull.Value ? null : (string)datos.Lector["ImagenUrl"];
                     aux.precio_compra = (decimal)datos.Lector["Precio"];
+
+                    aux.Activo = bool.Parse(datos.Lector["Activo"].ToString());
 
 
                     lista.Add(aux);
@@ -265,9 +267,9 @@ namespace negocio
             try
             {
                 AccesoDatos datos = new AccesoDatos();
-                datos.setearConsulta("update articulos set Activo = 0 where Id = @idProducto");
+                datos.setearConsulta("update articulos set Activo = @activo where Id = @idProducto");
                 datos.setearParametro("@idProducto", id);
-                datos.setearParametro("@Activo", activo);
+                datos.setearParametro("@activo", activo);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

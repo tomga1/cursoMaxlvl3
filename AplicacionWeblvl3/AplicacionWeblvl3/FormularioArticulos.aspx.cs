@@ -56,7 +56,7 @@ namespace AplicacionWeblvl3
 
                     if (!seleccionado.Activo)
                     {
-                        btnInactivar.Text = "Reactivar"; 
+                        btnInactivar.Text = "Reactivar";
                     }
 
                 }
@@ -155,25 +155,39 @@ namespace AplicacionWeblvl3
             ArticulosNegocio negocio = new ArticulosNegocio();
             Dom_Articulos seleccionado = (Dom_Articulos)Session["ArticuloSeleccionado"];
             string id = Request.QueryString["Id"] ?? string.Empty;
+
             try
             {
-
                 if (!string.IsNullOrEmpty(id) && int.TryParse(id, out int idProducto))
                 {
                     negocio.eliminarLogico(seleccionado.idProducto, !seleccionado.Activo);
 
+                    seleccionado.Activo = !seleccionado.Activo;
+
                     List<Dom_Articulos> listaArticulosActualizada = negocio.listar();
                     Session["listaArticulos"] = listaArticulosActualizada;
+                    Session["ArticuloSeleccionado"] = seleccionado;
 
-                    Response.Redirect("GridArticulos.aspx?mensaje=¡El artículo ha sido inactivado!");
+                    if (!seleccionado.Activo)
+                    {
+                        Response.Redirect("GridArticulos.aspx?mensaje=¡El artículo ha sido inactivado!");
+                    }
+                    else
+                    {
+                        Response.Redirect("GridArticulos.aspx?mensaje=¡El artículo ha sido activado!");
+                    }
                 }
-
             }
             catch (Exception ex)
             {
-
                 Session.Add("error", ex);
             }
         }
     }
 }
+
+
+
+
+
+
