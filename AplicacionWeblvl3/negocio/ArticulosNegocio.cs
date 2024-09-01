@@ -61,6 +61,55 @@ namespace negocio
             return lista;
         }
 
+        public List<Dom_Articulos> listarActivos()
+        {
+            List<Dom_Articulos> lista = new List<Dom_Articulos>();
+            AccesoDatos datos = new AccesoDatos();
+
+
+            try
+            {
+                datos.setearConsulta("select a.Id, Codigo, Nombre, a.Descripcion, m.Id as MarcaId, m.descripcion as Marca, c.Id as CategoriaId, c.descripcion as Categoria, ImagenUrl, Precio, a.Activo FROM dbo.ARTICULOS a JOIN marcas m ON m.Id = a.IdMarca JOIN categorias c ON c.Id = a.IdCategoria WHERE Activo = 1");
+
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Dom_Articulos aux = new Dom_Articulos();
+                    aux.idProducto = (int)datos.Lector["Id"];
+                    aux.codigo = (string)datos.Lector["Codigo"];
+                    aux.nombre = (string)datos.Lector["Nombre"];
+                    aux.descripcion = (string)datos.Lector["Descripcion"];
+
+                    aux.marca = new Dom_Marca();
+                    aux.marca.idMarca = (int)datos.Lector["MarcaId"];
+                    aux.marca.descripcion = (string)datos.Lector["Marca"];
+
+                    aux.categoria = new Dom_Categoria();
+                    aux.categoria.idCategoria = (int)datos.Lector["CategoriaId"];
+                    aux.categoria.descripcion = (string)datos.Lector["Categoria"];
+
+                    aux.UrlImagen = datos.Lector["ImagenUrl"] == DBNull.Value ? null : (string)datos.Lector["ImagenUrl"];
+                    aux.precio_compra = (decimal)datos.Lector["Precio"];
+                    aux.Activo = bool.Parse(datos.Lector["Activo"].ToString());
+
+
+                    lista.Add(aux);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine("Error al listar productos: " + ex.Message);
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+            return lista;
+        }
+
 
         public List<Dom_Articulos> listarConId(string id)
         {

@@ -16,7 +16,7 @@ namespace AplicacionWeblvl3
         protected void Page_Load(object sender, EventArgs e)
         {
             ArticulosNegocio negocio = new ArticulosNegocio();
-            ListaArticulos = negocio.listar();
+            ListaArticulos = negocio.listarActivos();
 
             repRepetidor.DataSource = ListaArticulos;
             repRepetidor.DataBind();    
