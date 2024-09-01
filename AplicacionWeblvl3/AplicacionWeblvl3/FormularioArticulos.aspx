@@ -19,7 +19,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="txtPrecio" class="form-label">Precio</label>
+                <labe   l for="txtPrecio" class="form-label">Precio</labe>
                 <asp:TextBox ID="txtPrecio" runat="server" CssClass="form-control" />
             </div>
 
@@ -58,6 +58,7 @@
                     <% } %>
                 </ContentTemplate>
             </asp:UpdatePanel>
+        </div>
         </div>
 
 
