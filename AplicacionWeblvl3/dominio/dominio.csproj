@@ -46,6 +46,7 @@
     <Compile Include="Dom_Categoria.cs" />
     <Compile Include="Dom_Marca.cs" />
     <Compile Include="Dom_Articulos.cs" />
+    <Compile Include="Dom_Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
