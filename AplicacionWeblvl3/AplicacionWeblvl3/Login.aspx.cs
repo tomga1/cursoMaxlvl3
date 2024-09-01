@@ -43,5 +43,15 @@ namespace AplicacionWeblvl3
 
             }
         }
+
+        protected void btnRegistrar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Registrar.aspx", false);
+        }
+
+        protected void btnOlvido_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

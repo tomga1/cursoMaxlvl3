@@ -11,7 +11,7 @@ namespace AplicacionWeblvl3
 {
 
 
-    public partial class Login
+    public partial class Registrar
     {
 
         /// <summary>
@@ -42,21 +42,12 @@ namespace AplicacionWeblvl3
         protected global::System.Web.UI.WebControls.Button btnAceptar;
 
         /// <summary>
-        /// Control btnRegistrar.
+        /// Control btnCancelar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRegistrar;
-
-        /// <summary>
-        /// Control btnOlvido.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnOlvido;
+        protected global::System.Web.UI.WebControls.Button btnCancelar;
     }
 }

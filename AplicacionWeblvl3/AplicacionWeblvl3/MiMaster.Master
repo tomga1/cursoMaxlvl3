@@ -12,6 +12,34 @@
     <script src="js/bootstrap.min.js"></script>
 
     <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            min-height: 100vh; /* Asegura que el body tenga al menos la altura de la ventana del navegador */
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        footer {
+            background-color: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #6c757d;
+            margin-top: auto; /* Empuja el footer hacia abajo */
+        }
+
+
         .whatsapp-logo {
             position: fixed;
             bottom: 20px;
@@ -90,24 +118,25 @@
                 </a>
             </div>
 
-            <footer style="background-color: #f8f9fa; padding: 20px; text-align: center; font-size: 14px; color: #6c757d;">
-                <div>
-                    <p>&copy; 2024 TuEcommerce. Todos los derechos reservados.</p>
-                    <p>
-                        <a href="/about-us" style="color: #007bff; text-decoration: none;">Sobre Nosotros</a> | 
-           <a href="/contact" style="color: #007bff; text-decoration: none;">Contacto</a> | 
-           <a href="/privacy-policy" style="color: #007bff; text-decoration: none;">Política de Privacidad</a>
-                    </p>
-                    <p>
-                        Síguenos en 
-            <a href="https://facebook.com/tu-ecommerce" style="color: #007bff; text-decoration: none;">Facebook</a>, 
-            <a href="https://twitter.com/tu-ecommerce" style="color: #007bff; text-decoration: none;">Twitter</a>, 
-            <a href="https://instagram.com/tu-ecommerce" style="color: #007bff; text-decoration: none;">Instagram</a>
-                    </p>
-                </div>
-            </footer>
+            
 
         </div>
     </form>
+     <footer style="background-color: #f8f9fa; padding: 20px; text-align: center; font-size: 14px; color: #6c757d;">
+     <div>
+         <p>&copy; 2024 TuEcommerce. Todos los derechos reservados.</p>
+         <p>
+             <a href="/about-us" style="color: #007bff; text-decoration: none;">Sobre Nosotros</a> | 
+<a href="/contact" style="color: #007bff; text-decoration: none;">Contacto</a> | 
+<a href="/privacy-policy" style="color: #007bff; text-decoration: none;">Política de Privacidad</a>
+         </p>
+         <p>
+             Síguenos en 
+ <a href="https://facebook.com/tu-ecommerce" style="color: #007bff; text-decoration: none;">Facebook</a>, 
+ <a href="https://twitter.com/tu-ecommerce" style="color: #007bff; text-decoration: none;">Twitter</a>, 
+ <a href="https://instagram.com/tu-ecommerce" style="color: #007bff; text-decoration: none;">Instagram</a>
+         </p>
+     </div>
+ </footer>
 </body>
 </html>

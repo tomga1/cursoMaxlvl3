@@ -15,7 +15,13 @@ namespace AplicacionWeblvl3
         public bool FiltroAvanzado { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (!(Session["usuario"] != null && ((dominio.Dom_Usuario)Session["usuario"]).TipoUsuario == dominio.TipoUsuario.ADMIN))
+            {
+                Session.Add("error", "No tienes permiso para ingresar a esta pantalla. Necesitas nivel ADMINISTRADOR");
+                Response.Redirect("Error.aspx", false);
+            }
+
+                if (!IsPostBack)
             {
                 if (Session["listaArticulos"] == null)
                 {
