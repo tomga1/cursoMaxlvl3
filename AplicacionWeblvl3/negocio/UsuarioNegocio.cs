@@ -24,8 +24,8 @@ namespace negocio
                 while (datos.Lector.Read())
                 {
                     usuario.idUsuario = (int)datos.Lector["Id"];
-                    usuario.nombre = (string)datos.Lector["nombre"];
-                    usuario.apellido = (string)datos.Lector["apellido"];
+                    usuario.nombre = datos.Lector["nombre"] != DBNull.Value ? (string)datos.Lector["nombre"] : null;
+                    usuario.apellido = datos.Lector["apellido"] != DBNull.Value ? (string)datos.Lector["apellido"] : null;
 
                     // Manejo de posibles valores DBNull
                     usuario.urlImagenPerfil = datos.Lector["urlImagenPerfil"] == DBNull.Value
