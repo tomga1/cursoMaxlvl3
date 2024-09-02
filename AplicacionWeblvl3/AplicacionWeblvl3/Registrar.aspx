@@ -25,7 +25,8 @@
 
             <div class="d-grid gap-2 col-6 mx-auto mb-4">
 
-                <asp:Button Text="Registrar" CssClass="btn btn-outline-success btn-margin" ID="btnAceptar" OnClick="btnAceptar_Click" runat="server" />
+                <asp:Button Text="Registrar" CssClass="btn btn-outline-success btn-margin" ID="btnAceptar" OnClick="btnAceptar_Click1" runat="server" />
+
                 <asp:Button Text="Cancelar" CssClass="btn btn-outline-danger btn-margin2" ID="btnCancelar" OnClick="btnCancelar_Click"     runat="server" />
 
             </div>

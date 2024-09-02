@@ -43,5 +43,33 @@ namespace negocio
                 throw new Exception("Error al intentar loguear el usuario: " + ex.Message);
             }
         }
+
+        public void AgregarUsuario(Dom_Usuario nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("insert into USERS (email,pass,admin) values (@email, @pass, 0);");
+
+                datos.setearParametro("@email", nuevo.email);
+                datos.setearParametro("@pass", nuevo.password);
+                datos.setearParametro("@admin", nuevo.TipoUsuario);
+                
+
+
+
+
+
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
     }
 }
