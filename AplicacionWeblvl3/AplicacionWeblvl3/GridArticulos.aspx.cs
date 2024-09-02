@@ -15,7 +15,7 @@ namespace AplicacionWeblvl3
         public bool FiltroAvanzado { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!(Session["usuario"] != null && ((dominio.Dom_Usuario)Session["usuario"]).TipoUsuario == dominio.TipoUsuario.ADMIN))
+            if (!Seguridad.esAdmin(Session["usuario"]))
             {
                 Session.Add("error", "No tienes permiso para ingresar a esta pantalla. Necesitas nivel ADMINISTRADOR");
                 Response.Redirect("Error.aspx", false);
@@ -28,7 +28,7 @@ namespace AplicacionWeblvl3
                     ArticulosNegocio negocio = new ArticulosNegocio();
                     Session.Add("listaArticulos", negocio.listar());
                 }
-            }
+            } 
             FiltroAvanzado = chkAvanzado.Checked;
             txtFiltroAvanzado.Enabled = FiltroAvanzado;
 

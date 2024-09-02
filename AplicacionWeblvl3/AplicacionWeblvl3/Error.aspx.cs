@@ -13,8 +13,8 @@ namespace AplicacionWeblvl3
         {
             if (Session["error"] != null)
             {
-                lblMensaje.Text = "No se pudo procesar el formulario debido a datos inválidos. Revisa los campos y vuelve a enviar.";
-                //lblMensaje.Text = Session["error"].ToString();
+                //lblMensaje.Text = "No se pudo procesar el formulario debido a datos inválidos. Revisa los campos y vuelve a enviar.";
+                lblMensaje.Text = Session["error"].ToString();
 
             }
         }

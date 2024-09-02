@@ -29,15 +29,17 @@ namespace AplicacionWeblvl3
             {
                 UsuarioNegocio negocio = new UsuarioNegocio();
 
-                string email = txtEmail.Text;
-                string password = txtPassword.Text;
-                bool valorbool = false;
 
-                Dom_Usuario usuario = new Dom_Usuario(email, password, valorbool);
+                Dom_Usuario usuario = new Dom_Usuario(
+                    txtEmail.Text,
+                    txtPassword.Text,
+                    false);
 
-                negocio.AgregarUsuario(usuario);
-                Response.Redirect("Login.aspx", false);
+               
+                int id = negocio.AgregarUsuario(usuario);
+                Session.Add("Login.aspx", usuario);
 
+                Response.Redirect("MiPerfil.aspx", false); 
 
             }
             catch (Exception ex)

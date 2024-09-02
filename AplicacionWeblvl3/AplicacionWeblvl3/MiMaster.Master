@@ -76,32 +76,27 @@
 
 
                             <li class="nav-item">
-                                <a class="nav-link" href="">Nosotros</a>
+                                <a class="nav-link active" href="">Nosotros</a>
                             </li>
-
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                            </li>
-
-
                         </ul>
 
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item">
+                                <a class="nav-link" href="MiPerfil.aspx">Mi Perfil</a>
+                            </li>
+
+                            <% if (!negocio.Seguridad.sesionActiva(Session["usuario"]))
+                                { %>
+                            <li class="nav-item">
                                 <a class="nav-link" href="Login.aspx">Login</a>
                             </li>
+                            <% }
+                            else
+                            { %>
+                            <li class="nav-item">
+                                <asp:Button ID="botonSalir" runat="server" Text="Salir" OnClick="botonSalir_Click" CssClass="nav-link" />
+                            </li>
+                            <% } %>
                         </ul>
                     </div>
                 </div>
@@ -118,25 +113,25 @@
                 </a>
             </div>
 
-            
+
 
         </div>
     </form>
-     <footer style="background-color: #f8f9fa; padding: 20px; text-align: center; font-size: 14px; color: #6c757d;">
-     <div>
-         <p>&copy; 2024 TuEcommerce. Todos los derechos reservados.</p>
-         <p>
-             <a href="/about-us" style="color: #007bff; text-decoration: none;">Sobre Nosotros</a> | 
-<a href="/contact" style="color: #007bff; text-decoration: none;">Contacto</a> | 
-<a href="/privacy-policy" style="color: #007bff; text-decoration: none;">Política de Privacidad</a>
-         </p>
-         <p>
-             Síguenos en 
+    <footer style="background-color: #f8f9fa; padding: 20px; text-align: center; font-size: 14px; color: #6c757d;">
+        <div>
+            <p>&copy; 2024 TuEcommerce. Todos los derechos reservados.</p>
+            <p>
+                <a href="/about-us" style="color: #007bff; text-decoration: none;">Sobre Nosotros</a> | 
+                <a href="/contact" style="color: #007bff; text-decoration: none;">Contacto</a> | 
+                <a href="/privacy-policy" style="color: #007bff; text-decoration: none;">Política de Privacidad</a>
+            </p>
+            <p>
+                Síguenos en 
  <a href="https://facebook.com/tu-ecommerce" style="color: #007bff; text-decoration: none;">Facebook</a>, 
  <a href="https://twitter.com/tu-ecommerce" style="color: #007bff; text-decoration: none;">Twitter</a>, 
  <a href="https://instagram.com/tu-ecommerce" style="color: #007bff; text-decoration: none;">Instagram</a>
-         </p>
-     </div>
- </footer>
+            </p>
+        </div>
+    </footer>
 </body>
 </html>

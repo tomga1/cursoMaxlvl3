@@ -44,24 +44,25 @@ namespace negocio
             }
         }
 
-        public void AgregarUsuario(Dom_Usuario nuevo)
+        public int AgregarUsuario(Dom_Usuario nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.setearConsulta("insert into USERS (email,pass,admin) values (@email, @pass, 0);");
+                datos.setearConsulta("insert into USERS (email,pass,admin) OUTPUT INSERTED.Id VALUES (@email, @pass, @admin);");
 
                 datos.setearParametro("@email", nuevo.email);
                 datos.setearParametro("@pass", nuevo.password);
                 datos.setearParametro("@admin", nuevo.TipoUsuario);
+
+                return datos.ejecutarAccionEscalar();
                 
 
 
 
 
 
-                datos.ejecutarAccion();
 
             }
             catch (Exception ex)
