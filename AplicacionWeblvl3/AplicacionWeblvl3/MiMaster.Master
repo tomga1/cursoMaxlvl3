@@ -76,7 +76,7 @@
 
 
                             <li class="nav-item">
-                                <a class="nav-link active" href="">Nosotros</a>
+                                <a class="nav-link active" href="Nosotros.aspx">Nosotros</a>
                             </li>
                         </ul>
 
@@ -121,7 +121,7 @@
         <div>
             <p>&copy; 2024 TuEcommerce. Todos los derechos reservados.</p>
             <p>
-                <a href="/about-us" style="color: #007bff; text-decoration: none;">Sobre Nosotros</a> | 
+                <a href="Nosotros.aspx" style="color: #007bff; text-decoration: none;">Sobre Nosotros</a> | 
                 <a href="/contact" style="color: #007bff; text-decoration: none;">Contacto</a> | 
                 <a href="/privacy-policy" style="color: #007bff; text-decoration: none;">Política de Privacidad</a>
             </p>

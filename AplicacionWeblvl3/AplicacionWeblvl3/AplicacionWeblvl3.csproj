@@ -96,6 +96,7 @@
     <Content Include="Login.aspx" />
     <Content Include="GridArticulos.aspx" />
     <Content Include="MiPerfil.aspx" />
+    <Content Include="Nosotros.aspx" />
     <Content Include="Registrar.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -151,6 +152,13 @@
     </Compile>
     <Compile Include="MiPerfil.aspx.designer.cs">
       <DependentUpon>MiPerfil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Nosotros.aspx.cs">
+      <DependentUpon>Nosotros.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Nosotros.aspx.designer.cs">
+      <DependentUpon>Nosotros.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registrar.aspx.cs">
