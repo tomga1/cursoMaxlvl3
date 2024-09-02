@@ -36,7 +36,6 @@ namespace AplicacionWeblvl3
                 Dom_Usuario usuario = new Dom_Usuario(email, password, valorbool);
 
                 negocio.AgregarUsuario(usuario);
-
                 Response.Redirect("Login.aspx", false);
 
 
