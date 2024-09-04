@@ -72,5 +72,24 @@ namespace negocio
             }
         }
 
+        public void actualizar(Dom_Usuario usuario)
+        {
+            try
+            {
+                AccesoDatos datos = new AccesoDatos();
+
+                datos.setearConsulta("update users set urlImagenPerfil = @urlImagenPerfil where Id = @Id");
+
+                datos.setearParametro("@urlImagenPerfil", usuario.urlImagenPerfil);
+                datos.setearParametro("@Id", usuario.idUsuario);
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }
