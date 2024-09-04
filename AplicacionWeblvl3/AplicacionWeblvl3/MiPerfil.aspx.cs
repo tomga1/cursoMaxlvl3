@@ -33,8 +33,8 @@ namespace AplicacionWeblvl3
 
                 negocio.actualizar(usuario);
 
-
-
+                Image img = (Image)Master.FindControl("imgAvatar");
+                img.ImageUrl = "~/Images/"+ usuario.urlImagenPerfil;
 
             }
             catch (Exception ex)

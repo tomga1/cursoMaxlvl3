@@ -5,6 +5,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using dominio;
 using negocio;
 
 namespace AplicacionWeblvl3
@@ -17,7 +18,12 @@ namespace AplicacionWeblvl3
             if (!Seguridad.sesionActiva(Session["usuario"]))
             {
                 Response.Redirect("Login.aspx", false);
-            } 
+            }
+
+            if (Seguridad.sesionActiva(Session["usuario"]))
+            {
+                imgAvatar.ImageUrl = ((Dom_Usuario)Session["usuario"]).urlImagenPerfilM;
+            }
         }
 
 
@@ -36,6 +42,6 @@ namespace AplicacionWeblvl3
         {
             Session.Clear();
             Response.Redirect("Login.aspx", false); 
-        }
+        } 
     }
 }
