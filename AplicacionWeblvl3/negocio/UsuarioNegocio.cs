@@ -37,7 +37,7 @@ namespace negocio
                 }
                 return false;
             }
-			catch (Exception ex)
+			catch (Exception ex) 
 			{
 
                 throw new Exception("Error al intentar loguear el usuario: " + ex.Message);
@@ -78,9 +78,11 @@ namespace negocio
             {
                 AccesoDatos datos = new AccesoDatos();
 
-                datos.setearConsulta("update users set urlImagenPerfil = @urlImagenPerfil where Id = @Id");
+                datos.setearConsulta("update users set nombre = @nombre, apellido = @apellido, urlImagenPerfil = @urlImagenPerfil where Id = @Id");
 
-                datos.setearParametro("@urlImagenPerfil", usuario.urlImagenPerfil);
+                datos.setearParametro("@nombre", usuario.nombre);
+                datos.setearParametro("@apellido", usuario.apellido);
+                datos.setearParametro("@urlImagenPerfil", usuario.urlImagenPerfil != null? usuario.urlImagenPerfil : "");
                 datos.setearParametro("@Id", usuario.idUsuario);
                 datos.ejecutarAccion();
 

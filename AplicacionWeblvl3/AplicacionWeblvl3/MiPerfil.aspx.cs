@@ -14,7 +14,32 @@ namespace AplicacionWeblvl3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
 
+                if (!IsPostBack)
+                {
+                    if (Seguridad.sesionActiva(Session["usuario"]))
+                    {
+                        Dom_Usuario usuario = (Dom_Usuario)Session["usuario"];
+
+                        txtEmail.Text = usuario.email;
+                        txtEmail.ReadOnly = true;
+                        txtNombre.Text = usuario.nombre;
+                        txtApellido.Text = usuario.apellido;
+                        if (!string.IsNullOrEmpty(usuario.urlImagenPerfil))
+                            imgNuevoPerfil.ImageUrl = "~/Images/" + usuario.urlImagenPerfil;
+
+                        //imgNuevoPerfil = usuario.urlImagenPerfil;
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("error", ex.ToString());
+            }
         }
 
 
@@ -23,18 +48,25 @@ namespace AplicacionWeblvl3
             try
             {
                 UsuarioNegocio negocio = new UsuarioNegocio();
-                string ruta = Server.MapPath("./Images/");
                 Dom_Usuario usuario = (Dom_Usuario)Session["usuario"];
-                txtImagen.PostedFile.SaveAs(ruta + "perfil-"+usuario.idUsuario+".jpg");
 
-                usuario.urlImagenPerfil = "perfil-"+usuario.idUsuario+".jpg";
+                if (txtImagen.PostedFile.FileName != "")
+                {
+
+                    string ruta = Server.MapPath("./Images/");
+                    txtImagen.PostedFile.SaveAs(ruta + "perfil-" + usuario.idUsuario + ".jpg");
+                    usuario.urlImagenPerfil = "perfil-" + usuario.idUsuario + ".jpg";
+                }
+
                 usuario.nombre = txtNombre.Text;
                 usuario.apellido = txtApellido.Text;
 
                 negocio.actualizar(usuario);
 
+
+
                 Image img = (Image)Master.FindControl("imgAvatar");
-                img.ImageUrl = "~/Images/"+ usuario.urlImagenPerfil;
+                img.ImageUrl = "~/Images/" + usuario.urlImagenPerfil;
 
             }
             catch (Exception ex)
