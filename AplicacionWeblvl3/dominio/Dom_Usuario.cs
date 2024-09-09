@@ -1,6 +1,7 @@
 ﻿using Microsoft.SqlServer.Server;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,8 @@ namespace dominio
         public string urlImagenPerfil { get; set; }
 
         public TipoUsuario TipoUsuario { get; set; }
+
+        public DateTime? fecha_nacimiento { get; set; }
 
         public Dom_Usuario(string user, string pass, bool admin)
         { 

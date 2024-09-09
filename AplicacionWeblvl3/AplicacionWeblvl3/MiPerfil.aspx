@@ -22,7 +22,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="txtFecha" class="form-label">Fecha de nacimiento</label>
-                    <asp:TextBox ID="txtFecha" runat="server" CssClass="form-control" />
+                    <asp:TextBox ID="txtFecha" runat="server" CssClass="form-control" TextMode="Date" />
                 </div>
                 <div class="mb-3">
                     <asp:Button Text="Guardar" ID="btnGuardar" CssClass="btn btn-success" OnClick="btnGuardar_Click1"  runat="server" />

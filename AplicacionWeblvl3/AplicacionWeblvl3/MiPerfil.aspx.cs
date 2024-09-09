@@ -29,7 +29,9 @@ namespace AplicacionWeblvl3
                         txtApellido.Text = usuario.apellido;
                         if (!string.IsNullOrEmpty(usuario.urlImagenPerfil))
                             imgNuevoPerfil.ImageUrl = "~/Images/" + usuario.urlImagenPerfil;
-
+                        txtFecha.Text = usuario.fecha_nacimiento.HasValue
+                            ? usuario.fecha_nacimiento.Value.ToString("yyyy-MM-dd")
+                            : string.Empty;
                         //imgNuevoPerfil = usuario.urlImagenPerfil;
 
                     }
@@ -60,6 +62,7 @@ namespace AplicacionWeblvl3
 
                 usuario.nombre = txtNombre.Text;
                 usuario.apellido = txtApellido.Text;
+                usuario.fecha_nacimiento = DateTime.Parse(txtFecha.Text);
 
                 negocio.actualizar(usuario);
 

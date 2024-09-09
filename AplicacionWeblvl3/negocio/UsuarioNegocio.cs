@@ -12,10 +12,10 @@ namespace negocio
 
         public bool Loguear(Dom_Usuario usuario)
         {
-			AccesoDatos datos = new AccesoDatos();
-			try
-			{
-                datos.setearConsulta("select Id,nombre, apellido, urlImagenPerfil, admin from users where email = @email and pass = @pass");
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("select Id,nombre, apellido, urlImagenPerfil, admin, fecha_nacimiento from users where email = @email and pass = @pass");
                 datos.setearParametro("@email", usuario.email);
                 datos.setearParametro("@pass", usuario.password);
 
@@ -32,13 +32,18 @@ namespace negocio
                         ? null
                         : (string)datos.Lector["urlImagenPerfil"];
 
+                    usuario.fecha_nacimiento = datos.Lector["fecha_nacimiento"] == DBNull.Value
+    ? (DateTime?)null
+    : (DateTime)datos.Lector["fecha_nacimiento"];
+
+
                     usuario.TipoUsuario = (bool)datos.Lector["admin"] ? TipoUsuario.ADMIN : TipoUsuario.NORMAL;
                     return true;
                 }
                 return false;
             }
-			catch (Exception ex) 
-			{
+            catch (Exception ex)
+            {
 
                 throw new Exception("Error al intentar loguear el usuario: " + ex.Message);
             }
@@ -57,7 +62,7 @@ namespace negocio
                 datos.setearParametro("@admin", nuevo.TipoUsuario);
 
                 return datos.ejecutarAccionEscalar();
-                
+
 
 
 
@@ -78,11 +83,12 @@ namespace negocio
             {
                 AccesoDatos datos = new AccesoDatos();
 
-                datos.setearConsulta("update users set nombre = @nombre, apellido = @apellido, urlImagenPerfil = @urlImagenPerfil where Id = @Id");
+                datos.setearConsulta("update users set nombre = @nombre, apellido = @apellido, urlImagenPerfil = @urlImagenPerfil, fecha_nacimiento = @fecha_nacimiento where Id = @Id");
 
                 datos.setearParametro("@nombre", usuario.nombre);
                 datos.setearParametro("@apellido", usuario.apellido);
-                datos.setearParametro("@urlImagenPerfil", usuario.urlImagenPerfil != null? usuario.urlImagenPerfil : "");
+                datos.setearParametro("@urlImagenPerfil", usuario.urlImagenPerfil != null ? usuario.urlImagenPerfil : "");
+                datos.setearParametro("fecha_nacimiento", usuario.fecha_nacimiento);
                 datos.setearParametro("@Id", usuario.idUsuario);
                 datos.ejecutarAccion();
 
