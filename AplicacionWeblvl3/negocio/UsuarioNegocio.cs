@@ -87,7 +87,7 @@ namespace negocio
 
                 datos.setearParametro("@nombre", usuario.nombre);
                 datos.setearParametro("@apellido", usuario.apellido);
-                datos.setearParametro("@urlImagenPerfil", usuario.urlImagenPerfil != null ? usuario.urlImagenPerfil : "");
+                datos.setearParametro("@urlImagenPerfil", usuario.urlImagenPerfil != null ? usuario.urlImagenPerfil : (object)DBNull.Value);
                 datos.setearParametro("fecha_nacimiento", usuario.fecha_nacimiento);
                 datos.setearParametro("@Id", usuario.idUsuario);
                 datos.ejecutarAccion();

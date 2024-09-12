@@ -16,7 +16,7 @@
         <div class="col">
             <div class="mb-3">
                 <label for="txtEmail" class="form-label">Email address</label>
-                <asp:TextBox runat="server" ID="txtEmail" CssClass="form-control" />
+                <asp:TextBox runat="server" REQUIRED ID="txtEmail" CssClass="form-control" />
             </div>
             <div class="mb-3">
                 <label for="txtPassword" class="form-label">Password</label>

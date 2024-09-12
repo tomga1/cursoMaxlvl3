@@ -21,6 +21,12 @@ namespace AplicacionWeblvl3
         {
             Dom_Usuario usuario;
             UsuarioNegocio negocio = new UsuarioNegocio();  
+
+            if(Validacion.ValidaTextoVacio(txtEmail) || Validacion.ValidaTextoVacio(txtPassword))
+            {
+                Session.Add("error", "Debes completar ambos campos...");
+                Response.Redirect("Error.aspx", false);
+            }
             try
             {
                 usuario = new Dom_Usuario(txtEmail.Text, txtPassword.Text, false);
@@ -36,6 +42,7 @@ namespace AplicacionWeblvl3
                 }
 
             }
+            catch(System.Threading.ThreadAbortException ex) { }
             catch (Exception ex)
             {
                 Session.Add("error", ex.ToString());
