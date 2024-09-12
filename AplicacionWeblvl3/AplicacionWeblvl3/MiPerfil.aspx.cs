@@ -49,6 +49,12 @@ namespace AplicacionWeblvl3
         {
             try
             {
+                Page.Validate();
+                if (!Page.IsValid)
+                {
+                    return;
+                }
+
                 UsuarioNegocio negocio = new UsuarioNegocio();
                 Dom_Usuario usuario = (Dom_Usuario)Session["usuario"];
 

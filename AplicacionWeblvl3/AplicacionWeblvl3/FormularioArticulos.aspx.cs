@@ -73,6 +73,13 @@ namespace AplicacionWeblvl3
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
+            Page.Validate();
+            if (!Page.IsValid)
+            {
+                return;
+            }
+
+
             Dom_Articulos articulo = new Dom_Articulos();
             ArticulosNegocio negocio = new ArticulosNegocio();
 

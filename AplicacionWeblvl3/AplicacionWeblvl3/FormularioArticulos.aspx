@@ -1,6 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MiMaster.Master" AutoEventWireup="true" CodeBehind="FormularioArticulos.aspx.cs" Inherits="AplicacionWeblvl3.FormularioArticulos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+      <style>
+          .validacion {
+              color: red;
+              font-size: 16px;
+          }
+      </style>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -13,14 +21,17 @@
                 <div class="mb-3">
                     <label for="txtCodigo" class="form-label">Código</label>
                     <asp:TextBox ID="txtCodigo" runat="server" CssClass="form-control" />
+                    <asp:RequiredFieldValidator ErrorMessage="Codigo es requerido" CssClass="validacion" ControlToValidate="txtCodigo" runat="server" />
                 </div>
                 <div class="mb-3">
                     <label for="txtNombre" class="form-label">Nombre</label>
                     <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" />
+                    <asp:RequiredFieldValidator ErrorMessage="Nombre es requerido"  CssClass="validacion" ControlToValidate="txtNombre" runat="server" />
                 </div>
                 <div class="mb-3">
                     <label for="txtPrecio" class="form-label">Precio</label>
                     <asp:TextBox ID="txtPrecio" runat="server" CssClass="form-control" />
+                    <asp:RegularExpressionValidator ErrorMessage="Solo numeros" ControlToValidate="txtPrecio" CssClass="validacion" ValidationExpression="^[0-9]+$" runat="server" />
                 </div>
                 <div class="mb-3">
                     <label for="ddlMarcas" class="form-label">Marca</label>
@@ -37,7 +48,8 @@
                             <asp:Button Text="Eliminar" ID="btnEliminar" CssClass="btn btn-danger" OnClick="btnEliminar_Click" runat="server" />
                             <asp:Button Text="Inactivar" ID="btnInactivar" OnClick="btnInactivar_Click" CssClass="btn btn-secondary" runat="server" />
                         </div>
-                        <% if (ConfirmaEliminacion) { %>
+                        <% if (ConfirmaEliminacion)
+                            { %>
                         <div class="mb-3">
                             <asp:CheckBox Text="Confirmar Eliminación" ID="chkConfirmaEliminacion" runat="server" />
                             <asp:Button Text="Eliminar" ID="ConfirmaEliminar" OnClick="ConfirmaEliminar_Click" CssClass="btn btn-outline-danger" runat="server" />

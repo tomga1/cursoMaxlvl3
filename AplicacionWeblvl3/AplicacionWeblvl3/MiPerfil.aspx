@@ -1,6 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MiMaster.Master" AutoEventWireup="true" CodeBehind="MiPerfil.aspx.cs" Inherits="AplicacionWeblvl3.MiPerfil" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+    <style>
+        .validacion{
+            color: red; 
+            font-size: 16px;
+        }
+    </style>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1>Mi perfil</h1>
@@ -11,10 +19,12 @@
                 <div class="mb-3">
                     <label for="txtNombre" class="form-label">Nombre</label>
                     <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" />
+                    <asp:RequiredFieldValidator ErrorMessage="El nombre es requerido" CssClass="validacion" ControlToValidate="txtNombre" runat="server" />
                 </div>
                 <div class="mb-3">
                     <label for="txtApellido" class="form-label">Apellido</label>
                     <asp:TextBox ID="txtApellido" runat="server" CssClass="form-control" />
+                    <asp:RequiredFieldValidator ErrorMessage="El apellido es requerido" CssClass="validacion" ControlToValidate="txtApellido" runat="server" />
                 </div>
                 <div class="mb-3">
                     <label for="txtEmail" class="form-label">Email</label>
