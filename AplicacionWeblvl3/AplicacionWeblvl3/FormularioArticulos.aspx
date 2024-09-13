@@ -8,6 +8,33 @@
               font-size: 16px;
           }
       </style>
+    <script>    
+
+        function validar() {
+            const txtCodigo = document.getElementById("txtCodigo");
+            const txtNombre = document.getElementById("txtNombre");
+            const txtPrecio = document.getElementById("txtPrecio");
+
+            if (txtCodigo.value.trim() == "") {
+                alert("Debes cargar el código.");
+                return false;
+            }
+
+            if (txtNombre.value.trim() == "") {
+                alert("Debes cargar el nombre.");
+                return false;
+            }
+
+            if (txtPrecio.value.trim() == "" || isNaN(txtPrecio.value)) {
+                alert("Debes ingresar un precio válido.");
+                return false;
+            }
+
+            return true;
+        }
+
+
+    </script>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -21,17 +48,17 @@
                 <div class="mb-3">
                     <label for="txtCodigo" class="form-label">Código</label>
                     <asp:TextBox ID="txtCodigo" runat="server" CssClass="form-control" />
-                    <asp:RequiredFieldValidator ErrorMessage="Codigo es requerido" CssClass="validacion" ControlToValidate="txtCodigo" runat="server" />
+<%--                    <asp:RequiredFieldValidator ErrorMessage="Codigo es requerido" CssClass="validacion" ControlToValidate="txtCodigo" runat="server" />--%>
                 </div>
                 <div class="mb-3">
                     <label for="txtNombre" class="form-label">Nombre</label>
                     <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" />
-                    <asp:RequiredFieldValidator ErrorMessage="Nombre es requerido"  CssClass="validacion" ControlToValidate="txtNombre" runat="server" />
+<%--                    <asp:RequiredFieldValidator ErrorMessage="Nombre es requerido"  CssClass="validacion" ControlToValidate="txtNombre" runat="server" />--%>
                 </div>
                 <div class="mb-3">
                     <label for="txtPrecio" class="form-label">Precio</label>
                     <asp:TextBox ID="txtPrecio" runat="server" CssClass="form-control" />
-                    <asp:RegularExpressionValidator ErrorMessage="Solo numeros" ControlToValidate="txtPrecio" CssClass="validacion" ValidationExpression="^[0-9]+$" runat="server" />
+<%--                    <asp:RegularExpressionValidator ErrorMessage="Solo numeros" ControlToValidate="txtPrecio" CssClass="validacion" ValidationExpression="^[0-9]+$" runat="server" />--%>
                 </div>
                 <div class="mb-3">
                     <label for="ddlMarcas" class="form-label">Marca</label>
@@ -44,7 +71,7 @@
                 <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                     <ContentTemplate>
                         <div class="mb-3">
-                            <asp:Button Text="Aceptar" ID="btnAceptar" CssClass="btn btn-success" OnClick="btnAceptar_Click" runat="server" />
+                            <asp:Button Text="Aceptar" ID="btnAceptar" CssClass="btn btn-success" OnClientClick="return validar()" OnClick="btnAceptar_Click" runat="server" />
                             <asp:Button Text="Eliminar" ID="btnEliminar" CssClass="btn btn-danger" OnClick="btnEliminar_Click" runat="server" />
                             <asp:Button Text="Inactivar" ID="btnInactivar" OnClick="btnInactivar_Click" CssClass="btn btn-secondary" runat="server" />
                         </div>

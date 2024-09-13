@@ -5,6 +5,11 @@
         .btn-margin {
             margin-top: 40px;
         }
+
+        .validacion {
+            color: red;
+            font-size: 16px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -17,6 +22,10 @@
             <div class="mb-3">
                 <label for="txtEmail" class="form-label">Email address</label>
                 <asp:TextBox runat="server" REQUIRED ID="txtEmail" CssClass="form-control" />
+                <%--                    <asp:RegularExpressionValidator ErrorMessage="Solo numeros" ControlToValidate="txtPrecio" CssClass="validacion" ValidationExpression="^[0-9]+$" runat="server" />--%>
+              <%--  <asp:RegularExpressionValidator ErrorMessage="Debe ingresar un mail" CssClass="validacion" ControlToValidate="txtEmail" ValidationExpression="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
+"
+                    runat="server" />--%>
             </div>
             <div class="mb-3">
                 <label for="txtPassword" class="form-label">Password</label>
@@ -38,4 +47,3 @@
 
 
 </asp:Content>
- 
