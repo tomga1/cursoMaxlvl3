@@ -3,11 +3,29 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <style>
-        .validacion{
-            color: red; 
+        .validacion {
+            color: red;
             font-size: 16px;
         }
     </style>
+
+    <script>
+        function validar() {
+            const txtNombre = document.getElementById('<%= txtNombre.ClientID %>'); // Usar el ClientID generado
+            if (txtNombre.value == "") {
+                txtNombre.classList.add("is-invalid");
+                txtNombre.classList.remove("is-valid");
+                return false;
+            } else {
+                txtNombre.classList.remove("is-invalid");
+                txtNombre.classList.add("is-valid");
+                return true;
+            }
+        }
+    </script>
+
+
+
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -18,8 +36,8 @@
             <div class="col-md-6">
                 <div class="mb-3">
                     <label for="txtNombre" class="form-label">Nombre</label>
-                    <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" />
-                    <asp:RequiredFieldValidator ErrorMessage="El nombre es requerido" CssClass="validacion" ControlToValidate="txtNombre" runat="server" />
+                    <asp:TextBox ID="txtNombre" ClientIDMode="Static" runat="server" CssClass="form-control" />
+<%--                    <asp:RequiredFieldValidator ErrorMessage="El nombre es requerido" CssClass="validacion" ControlToValidate="txtNombre" runat="server" />--%>
                 </div>
                 <div class="mb-3">
                     <label for="txtApellido" class="form-label">Apellido</label>
@@ -35,7 +53,7 @@
                     <asp:TextBox ID="txtFecha" runat="server" CssClass="form-control" TextMode="Date" />
                 </div>
                 <div class="mb-3">
-                    <asp:Button Text="Guardar" ID="btnGuardar" CssClass="btn btn-success" OnClick="btnGuardar_Click1"  runat="server" />
+                    <asp:Button Text="Guardar" ID="btnGuardar" CssClass="btn btn-success" OnClientClick="return validar();" OnClick="btnGuardar_Click1" runat="server" />
                 </div>
 
             </div>
@@ -52,4 +70,4 @@
     </div>
 
 
-</asp:Content> 
+</asp:Content>
