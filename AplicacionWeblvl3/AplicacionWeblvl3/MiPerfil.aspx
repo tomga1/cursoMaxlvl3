@@ -12,19 +12,44 @@
     <script>
         function validar() {
             const txtNombre = document.getElementById('txtNombre');
+            const txtApellido = document.getElementById('txtApellido');
+            const txtEmail = document.getElementById('txtEmail');
 
-            if (txtNombre.value === "") {
+            let valid = true;
+
+            // Validar nombre
+            if (txtNombre.value.trim() === "") {
                 txtNombre.classList.add("is-invalid");
                 txtNombre.classList.remove("is-valid");
-                return false;
+                valid = false;
             } else {
                 txtNombre.classList.remove("is-invalid");
                 txtNombre.classList.add("is-valid");
-                
-                return false; 
             }
-        }
 
+            // Validar apellido
+            if (txtApellido.value.trim() === "") {
+                txtApellido.classList.add("is-invalid");
+                txtApellido.classList.remove("is-valid");
+                valid = false;
+            } else {
+                txtApellido.classList.remove("is-invalid");
+                txtApellido.classList.add("is-valid");
+            }
+
+            // Validar email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(txtEmail.value.trim())) {
+                txtEmail.classList.add("is-invalid");
+                txtEmail.classList.remove("is-valid");
+                valid = false;
+            } else {
+                txtEmail.classList.remove("is-invalid");
+                txtEmail.classList.add("is-valid");
+            }
+
+            return valid; // Solo se enviará el formulario si todo es válido
+        }
     </script>
 
 
@@ -46,17 +71,17 @@
                 </div>
                 <div class="mb-3">
                     <label for="txtApellido" class="form-label">Apellido</label>
-                    <asp:TextBox ID="txtApellido" runat="server" CssClass="form-control" />
+                    <asp:TextBox ID="txtApellido" runat="server" ClientIDMode="Static" CssClass="form-control" />
                     <asp:RequiredFieldValidator ErrorMessage="El apellido es requerido" CssClass="validacion" ControlToValidate="txtApellido" runat="server" />
                 </div>
                 <div class="mb-3">
                     <label for="txtEmail" class="form-label">Email</label>
-                    <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" />
+                    <asp:TextBox ID="txtEmail" runat="server" ClientIDMode="Static" CssClass="form-control" />
                 </div>
                 <div class="mb-3">
                     <label for="txtFecha" class="form-label">Fecha de nacimiento</label>
                     <asp:TextBox ID="txtFecha" runat="server" CssClass="form-control" TextMode="Date" />
-                </div>
+                </div>fsfas
                 <div class="mb-3">
                     <asp:Button Text="Guardar" ID="btnGuardar" CssClass="btn btn-success" OnClientClick="return validar()" OnClick="btnGuardar_Click1" runat="server" />
                 </div>
