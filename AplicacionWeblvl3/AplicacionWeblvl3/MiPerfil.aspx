@@ -11,18 +11,23 @@
 
     <script>
         function validar() {
-            const txtNombre = document.getElementById('<%= txtNombre.ClientID %>'); // Usar el ClientID generado
-            if (txtNombre.value == "") {
+            const txtNombre = document.getElementById('txtNombre');
+
+            if (txtNombre.value === "") {
                 txtNombre.classList.add("is-invalid");
                 txtNombre.classList.remove("is-valid");
                 return false;
             } else {
                 txtNombre.classList.remove("is-invalid");
                 txtNombre.classList.add("is-valid");
-                return true;
+                
+                return false; 
             }
         }
+
     </script>
+
+
 
 
 
@@ -53,7 +58,7 @@
                     <asp:TextBox ID="txtFecha" runat="server" CssClass="form-control" TextMode="Date" />
                 </div>
                 <div class="mb-3">
-                    <asp:Button Text="Guardar" ID="btnGuardar" CssClass="btn btn-success" OnClientClick="return validar();" OnClick="btnGuardar_Click1" runat="server" />
+                    <asp:Button Text="Guardar" ID="btnGuardar" CssClass="btn btn-success" OnClientClick="return validar()" OnClick="btnGuardar_Click1" runat="server" />
                 </div>
 
             </div>
