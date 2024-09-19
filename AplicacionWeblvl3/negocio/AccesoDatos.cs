@@ -6,6 +6,7 @@ using System.Net.Configuration;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using System.Configuration;
 
 namespace negocio
 {
@@ -23,7 +24,8 @@ namespace negocio
 
         public AccesoDatos()
         {
-            conexion = new SqlConnection("server=.\\SQLEXPRESS; database=CATALOGO_WEB_DB; integrated security=true");
+            string cadenaConexion = ConfigurationManager.ConnectionStrings["cadenaConexion"].ConnectionString;
+            conexion = new SqlConnection(cadenaConexion);
             comando = new SqlCommand();
         }
 
