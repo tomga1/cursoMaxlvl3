@@ -8,33 +8,56 @@
               font-size: 16px;
           }
       </style>
-    <script>    
-
+    <script>
         function validar() {
-            const txtCodigo = document.getElementById("txtCodigo");
-            const txtNombre = document.getElementById("txtNombre");
-            const txtPrecio = document.getElementById("txtPrecio");
+            const txtCodigo = document.getElementById('<%= txtCodigo.ClientID %>');
+            const txtNombre = document.getElementById('<%= txtNombre.ClientID %>');
+            const txtPrecio = document.getElementById('<%= txtPrecio.ClientID %>')
+            const txtDescripcion = document.getElementById('<%= txtDescripcion.ClientID %>');
 
-            if (txtCodigo.value.trim() == "") {
-                alert("Debes cargar el código.");
-                return false;
+
+            let valid = true;
+
+            if (txtCodigo.value.trim() === "") {
+                txtCodigo.classList.add("is-invalid");
+                txtCodigo.classList.remove("is-valid");
+                valid = false;
+            } else {
+                txtCodigo.classList.remove("is-invalid");
+                txtCodigo.classList.add("is-valid");
+            }
+            if (txtNombre.value.trim() === "") {
+                txtNombre.classList.add("is-invalid");
+                txtNombre.classList.remove("is-valid");
+                valid = false;
+            } else {
+                txtNombre.classList.remove("is-invalid");
+                txtNombre.classList.add("is-valid");
             }
 
-            if (txtNombre.value.trim() == "") {
-                alert("Debes cargar el nombre.");
-                return false;
+            const precioValue = txtPrecio.Value.Trim()
+            if (txtPrecio.value.trim() === "") {
+                txtPrecio.classList.add("is-invalid");
+                txtPrecio.classList.remove("is-valid");
+                valid = false;
+            } else {
+                txtPrecio.classList.remove("is-invalid");
+                txtPrecio.classList.add("is-valid");
             }
 
-            if (txtPrecio.value.trim() == "" || isNaN(txtPrecio.value)) {
-                alert("Debes ingresar un precio válido.");
-                return false;
+            if (txtDescripcion.value.trim() === "") {
+                txtDescripcion.classList.add("is-invalid");
+                txtDescripcion.classList.remove("is-valid");
+                valid = false;
+            } else {
+                txtDescripcion.classList.remove("is-invalid");
+                txtDescripcion.classList.add("is-valid");
             }
 
-            return true;
+
+            return valid; // Solo se enviará el formulario si todo es válido
         }
-
-
-    </script>
+</script>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -79,9 +102,11 @@
                             { %>
                         <div class="mb-3">
                             <asp:CheckBox Text="Confirmar Eliminación" ID="chkConfirmaEliminacion" runat="server" />
-                            <asp:Button Text="Eliminar" ID="ConfirmaEliminar" OnClick="ConfirmaEliminar_Click" CssClass="btn btn-outline-danger" runat="server" />
+                            <asp:Button Text="Eliminar" ID="ConfirmaEliminar" OnClientClick="return validar()" OnClick="ConfirmaEliminar_Click" CssClass="btn btn-outline-danger" runat="server" />
                         </div>
                         <% } %>
+
+                            
                     </ContentTemplate>
                 </asp:UpdatePanel>
             </div>

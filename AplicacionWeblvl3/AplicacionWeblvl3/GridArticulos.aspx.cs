@@ -21,14 +21,14 @@ namespace AplicacionWeblvl3
                 Response.Redirect("Error.aspx", false);
             }
 
-                if (!IsPostBack)
+            if (!IsPostBack)
             {
                 if (Session["listaArticulos"] == null)
                 {
                     ArticulosNegocio negocio = new ArticulosNegocio();
-                    Session.Add("listaArticulos", negocio.listar());
+                    Session.Add("listaArticulos", negocio.listarActivos());
                 }
-            } 
+            }
             FiltroAvanzado = chkAvanzado.Checked;
             txtFiltroAvanzado.Enabled = FiltroAvanzado;
 

@@ -108,7 +108,7 @@ namespace AplicacionWeblvl3
 
 
             //((List<Dom_Articulos>)Session["listaArticulos"]).Add(articulo);
-            List<Dom_Articulos> listaArticulosActualizada = negocio.listar();
+            List<Dom_Articulos> listaArticulosActualizada = negocio.listarActivos();
             Session["listaArticulos"] = listaArticulosActualizada;
 
             Response.Redirect("GridArticulos.aspx");
@@ -129,22 +129,29 @@ namespace AplicacionWeblvl3
 
         protected void ConfirmaEliminar_Click(object sender, EventArgs e)
         {
-
             ArticulosNegocio negocio = new ArticulosNegocio();
             string id = Request.QueryString["Id"] ?? string.Empty;
+
 
             try
             {
 
-                if (!string.IsNullOrEmpty(id) && int.TryParse(id, out int idProducto))
+                if (chkConfirmaEliminacion.Checked)
                 {
-                    negocio.eliminar(idProducto);
+                    if (!string.IsNullOrEmpty(id) && int.TryParse(id, out int idProducto))
+                    {
+                        negocio.eliminar(idProducto);
 
-                    List<Dom_Articulos> listaArticulosActualizada = negocio.listar();
-                    Session["listaArticulos"] = listaArticulosActualizada;
+                        List<Dom_Articulos> listaArticulosActualizada = negocio.listarActivos();
+                        Session["listaArticulos"] = listaArticulosActualizada;
 
-                    Response.Redirect("GridArticulos.aspx?mensaje=Eliminado con éxito!");
+                        Response.Redirect("GridArticulos.aspx?mensaje=Eliminado con éxito!");
 
+
+                    }
+                }
+                else
+                {
 
                 }
 
