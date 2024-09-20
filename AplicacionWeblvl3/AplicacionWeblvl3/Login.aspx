@@ -21,7 +21,7 @@
         <div class="col">
             <div class="mb-3">
                 <label for="txtEmail" class="form-label">Email address</label>
-                <asp:TextBox runat="server" REQUIRED ID="txtEmail" CssClass="form-control" />
+                <asp:TextBox runat="server" ID="txtEmail" CssClass="form-control" />
                 <%--                    <asp:RegularExpressionValidator ErrorMessage="Solo numeros" ControlToValidate="txtPrecio" CssClass="validacion" ValidationExpression="^[0-9]+$" runat="server" />--%>
               <%--  <asp:RegularExpressionValidator ErrorMessage="Debe ingresar un mail" CssClass="validacion" ControlToValidate="txtEmail" ValidationExpression="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
 "

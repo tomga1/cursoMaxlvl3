@@ -27,9 +27,9 @@ namespace AplicacionWeblvl3
             //}
 
             Dom_Usuario usuario;
-            UsuarioNegocio negocio = new UsuarioNegocio();  
+            UsuarioNegocio negocio = new UsuarioNegocio();
 
-            if(Validacion.ValidaTextoVacio(txtEmail) || Validacion.ValidaTextoVacio(txtPassword))
+            if (Validacion.ValidaTextoVacio(txtEmail) || Validacion.ValidaTextoVacio(txtPassword))
             {
                 Session.Add("error", "Debes completar ambos campos...");
                 Response.Redirect("Error.aspx", false);
@@ -58,14 +58,16 @@ namespace AplicacionWeblvl3
             }
         }
 
-        protected void btnRegistrar_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Registrar.aspx", false);
-        }
+        
 
         protected void btnOlvido_Click(object sender, EventArgs e)
         {
 
+        }
+
+        protected void btnRegistrar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Registrar.aspx", false);
         }
     }
 }
